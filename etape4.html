@@ -54,7 +54,7 @@
   </section>
 
   <section class="exo">
-    <div class="exo-tete"><span class="pic">🗂️</span><b>Exercice — le tri des données</b>
+    <div class="exo-tete"><span class="pic"><svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span><b>Exercice — le tri des données</b>
       <span class="compteur" id="compteur">0 / 16</span></div>
     <div class="exo-corps">
       <p>Pour chaque donnée, choisissez sa zone en équipe — puis comparez avec le classement indicatif de l'agence.</p>
@@ -89,7 +89,7 @@
     <div class="card">
       <div class="grid2">
         <div>
-          <h3 style="margin-top:0">✅ À garder</h3>
+          <h3 style="margin-top:0"><svg class="ei ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg> À garder</h3>
           <ul>
             <li>Prénom</li>
             <li>Parcours et compétences</li>
@@ -97,7 +97,7 @@
           </ul>
         </div>
         <div>
-          <h3 style="margin-top:0">❌ À retirer</h3>
+          <h3 style="margin-top:0"><svg class="ei bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg> À retirer</h3>
           <ul>
             <li>Adresse complète (la commune suffit)</li>
             <li>Date de naissance complète</li>
@@ -120,14 +120,14 @@
   </section>
 
   <section class="exo">
-    <div class="exo-tete"><span class="pic">📋</span><b>Livrable — ma matrice personnelle</b></div>
+    <div class="exo-tete"><span class="pic"><svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><b>Livrable — ma matrice personnelle</b></div>
     <div class="exo-corps">
       <p>Reportez 3 données par colonne — celles qui <b>VOUS</b> concernent le plus.</p>
-      <label for="mVert" style="color:var(--ok)">🟢 Je peux partager</label>
+      <label for="mVert" style="color:var(--ok)"><span class="zdot ok" aria-hidden="true"></span> Je peux partager</label>
       <textarea id="mVert" placeholder="Ex. : mon prénom, mon parcours, ma photo de profil choisie…"></textarea>
-      <label for="mOrange" style="color:var(--warn)">🟠 Je vérifie qui demande et pourquoi</label>
+      <label for="mOrange" style="color:var(--warn)"><span class="zdot warn" aria-hidden="true"></span> Je vérifie qui demande et pourquoi</label>
       <textarea id="mOrange" placeholder="Ex. : mon numéro de GSM, mon adresse, mon IBAN…"></textarea>
-      <label for="mRouge" style="color:var(--bad)">🔴 Je ne partage pas</label>
+      <label for="mRouge" style="color:var(--bad)"><span class="zdot bad" aria-hidden="true"></span> Je ne partage pas</label>
       <textarea id="mRouge" placeholder="Ex. : mon mot de passe, un code SMS, ma carte d'identité…"></textarea>
       <div class="actions">
         <button class="btn" id="finEtape">✓ J'ai terminé cette étape</button>
@@ -148,37 +148,37 @@
 (function(){
 // zones : tableau des zones acceptées ; la première est la zone « de référence »
 var CARTES=[
- {pic:'🙂', nom:'Mon prénom', zones:['vert'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14a4 4 0 0 0 8 0"/><path d="M9 9h.01M15 9h.01"/></svg>', nom:'Mon prénom', zones:['vert'],
   note:'Donnée publique par nature.'},
- {pic:'🖼️', nom:'Ma photo de profil', zones:['vert','orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 4.5-4.5 3.5 3.5 3-3L20 16.5"/></svg>', nom:'Ma photo de profil', zones:['vert','orange'],
   note:'Choisie et maîtrisée : ok. Attention à ce qu\'elle révèle (lieu, enfants).'},
- {pic:'📄', nom:'Mon CV (parcours, mail de contact)', zones:['vert','orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M13 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>', nom:'Mon CV (parcours, mail de contact)', zones:['vert','orange'],
   note:'Fait pour être diffusé — mais nettoyé (voir le cas pratique CV plus bas).'},
- {pic:'📞', nom:'Mon numéro de GSM', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>', nom:'Mon numéro de GSM', zones:['orange'],
   note:'À qui ? Un recruteur identifié oui, un formulaire douteux non.'},
- {pic:'🏠', nom:'Mon adresse complète', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>', nom:'Mon adresse complète', zones:['orange'],
   note:'Nécessaire pour une administration ou une livraison ; inutile sur un CV public ou un réseau social.'},
- {pic:'🎂', nom:'Ma date de naissance complète', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6Z"/><path d="M4 17h16"/><path d="M12 8v5"/><path d="M12 5a1.4 1.4 0 1 0 0-2.8A1.4 1.4 0 0 0 12 5Z"/></svg>', nom:'Ma date de naissance complète', zones:['orange'],
   note:'Sert à usurper l\'identité. L\'année seule suffit presque toujours.'},
- {pic:'📍', nom:'Ma localisation en temps réel', zones:['orange','rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>', nom:'Ma localisation en temps réel', zones:['orange','rouge'],
   note:'Réservée aux proches choisis. Jamais en public.'},
- {pic:'👶', nom:'Une photo de mes enfants / proches', zones:['orange','rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h.01M15 12h.01"/><path d="M10 16a3.5 3.5 0 0 0 4 0"/><path d="M12 3a7 7 0 0 0-7 7v3a7 7 0 0 0 14 0v-3a7 7 0 0 0-7-7Z"/></svg>', nom:'Une photo de mes enfants / proches', zones:['orange','rouge'],
   note:'Ce n\'est pas seulement MA donnée — c\'est aussi la leur.'},
- {pic:'🏦', nom:'Mon IBAN', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M4 10h16"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="m12 3 8 5H4Z"/></svg>', nom:'Mon IBAN', zones:['orange'],
   note:'Légitime pour un employeur ou une administration identifiés ; jamais par mail à un inconnu.'},
- {pic:'🪪', nom:'Mon numéro de registre national', zones:['rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M6 17a3 3 0 0 1 6 0"/><path d="M15 9h3M15 13h3"/></svg>', nom:'Mon numéro de registre national', zones:['rouge'],
   note:'La clé de l\'identité belge. Uniquement en face-à-face administratif ou canal sécurisé officiel (administration / employeur formel).'},
- {pic:'📇', nom:'Une copie de ma carte d\'identité', zones:['rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>', nom:'Une copie de ma carte d\'identité', zones:['rouge'],
   note:'Permet d\'ouvrir des crédits à votre nom. Jamais en pièce jointe à un inconnu.'},
- {pic:'🗳️', nom:'Mon opinion politique / religieuse', zones:['orange','rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 12 3 3 5-5"/><path d="M5 8h14l1.5 12H3.5Z"/></svg>', nom:'Mon opinion politique / religieuse', zones:['orange','rouge'],
   note:'Donnée dite sensible : sa diffusion vous suit longtemps.'},
- {pic:'🔑', nom:'Mon mot de passe', zones:['rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8"/><path d="m17 4 3 3M14 7l3 3"/></svg>', nom:'Mon mot de passe', zones:['rouge'],
   note:'Ne se partage avec personne. Aucune organisation légitime ne le demande. ROUGE — toujours.'},
- {pic:'💬', nom:'Un code reçu par SMS', zones:['rouge'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 1 3.5 6.6L3 20l1.4-4A8 8 0 0 1 4 12Z"/></svg>', nom:'Un code reçu par SMS', zones:['rouge'],
   note:'Le transmettre, c\'est ouvrir soi-même la porte. ROUGE — toujours.'},
- {pic:'🚶', nom:'Mes habitudes (horaires, trajets) en public', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="1.6"/><path d="m9 20 2-6-2-3 4-1 2 3 2 1"/><path d="m11 14-2 6M13 12l1 4-2 4"/></svg>', nom:'Mes habitudes (horaires, trajets) en public', zones:['orange'],
   note:'Indique quand vous n\'êtes pas chez vous.'},
- {pic:'✈️', nom:'Ma photo de vacances (en direct)', zones:['orange'],
+ {pic:'<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 4a1.8 1.8 0 0 1 1.8 1.8L14 10v5l2.5 2v2L12 17.5 7.5 19v-2L10 15v-5L4.7 5.8A1.8 1.8 0 0 1 6.5 4L12 7Z"/></svg>', nom:'Ma photo de vacances (en direct)', zones:['orange'],
   note:'Publiée pendant le séjour, elle annonce que la maison est vide. Après le retour : moins risqué.'}
 ];
 var ZLIB={vert:'VERT · je partage', orange:'ORANGE · je vérifie', rouge:'ROUGE · jamais'};

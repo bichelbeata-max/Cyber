@@ -253,6 +253,24 @@ a.prog-item:hover{border-color:var(--muted); background:var(--wash)}
 .chip:hover{border-color:var(--muted)}
 .chip.on{border-color:var(--mauve); background:var(--mauve-soft); color:var(--mauve-dark); font-weight:700}
 
+/* ---------- Pictogrammes SVG ---------- */
+.ei{width:1.15em; height:1.15em; display:inline-block; vertical-align:-.18em; flex:none; color:var(--mauve)}
+.ei.ok{color:var(--ok)}
+.ei.bad{color:var(--bad)}
+.zdot{width:.85em; height:.85em; border-radius:50%; display:inline-block; vertical-align:0; flex:none; margin-right:.2em}
+.zdot.ok{background:var(--ok)}
+.zdot.warn{background:var(--warn)}
+.zdot.bad{background:var(--bad)}
+.exo-tete .pic{display:inline-flex; align-items:center}
+.exo-tete .pic .ei{width:22px; height:22px; color:#fff; vertical-align:middle}
+.pastille .ei{width:22px; height:22px; color:#fff}
+.prog-item .num .ei{width:20px; height:20px; vertical-align:middle}
+.prog-item.pause .num .ei{color:var(--muted)}
+.hero-accueil .pastilles .ei{width:18px; height:18px}
+.choice .ic .ei{width:26px; height:26px}
+.donnee .intitule .ei{width:24px; height:24px}
+.photo .ei{width:36px; height:36px}
+
 @media (max-width:560px){
   .hero-accueil{padding:30px 22px}
   .prog-item .heure{width:auto; font-size:12px}
