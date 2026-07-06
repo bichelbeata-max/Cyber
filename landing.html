@@ -66,6 +66,19 @@ a{color:var(--blue); text-decoration:none}
 
 /* ---------- Hero ---------- */
 .hero{padding:96px 0 var(--space-section)}
+.hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center}
+.hero-copy{min-width:0}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr; gap:44px}
+  .hero{padding:72px 0 var(--space-section)}
+}
+/* Emplacement image réservé */
+.hero-media{position:relative; margin:0; aspect-ratio:4/3; border-radius:var(--r-lg); overflow:hidden; background:var(--wash); border:1px solid var(--line)}
+.hero-media .ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:24px; color:var(--muted)}
+.hero-media .ph svg{color:#B7B4CC}
+.hero-media .ph b{font-size:15px; font-weight:600; color:#8B889F}
+.hero-media .ph small{font-size:13px; color:#A6A3B8}
+.hero-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
 .eyebrow{
   display:inline-block; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
   color:var(--mauve); background:var(--mauve-tint); padding:7px 14px; border-radius:var(--r-full); margin-bottom:28px;
@@ -177,6 +190,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
 
 <header class="hero">
   <div class="wrap">
+    <div class="hero-copy">
     <span class="eyebrow">Le Forem · Digital Factory</span>
     <h1>Une journée pour reprendre la main sur sa vie numérique.</h1>
     <p class="lead">Atelier de sensibilisation à la cybersécurité, pensé pour les demandeurs d'emploi.
@@ -194,6 +208,20 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
       <span class="dot"></span>
       <span>Exercices pratiques, sans compte ni collecte de données</span>
     </div>
+    </div>
+
+    <figure class="hero-media">
+      <div class="ph">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="8.5" cy="9.5" r="1.6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m4 17 4.5-4.5 3.5 3.5 3-3L20 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <b>Visuel à venir</b>
+        <small>Déposez une image dans <code>assets/hero.jpg</code></small>
+      </div>
+      <img src="assets/hero.jpg" alt="Participants en atelier Cyber-réflexes" loading="eager" onerror="this.remove()">
+    </figure>
   </div>
 </header>
 
