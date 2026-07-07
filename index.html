@@ -131,6 +131,7 @@ section.bloc{padding:var(--space-section) 0}
 .prog .t small{display:block; color:var(--muted); font-weight:400; font-size:14.5px; margin-top:2px}
 .prog .go{color:var(--mauve); font-size:14px; font-weight:600; opacity:0; transition:opacity .18s}
 .prog a:hover .go{opacity:1}
+.prog a.fait .go{opacity:1; color:#1a8f5a; font-weight:700}
 .prog .row{color:var(--muted)}
 @media (max-width:680px){
   .prog a, .prog .row{grid-template-columns:70px 1fr; gap:14px}
@@ -186,7 +187,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
     <span class="spacer"></span>
     <a class="lien" href="#acquis">Ce qu'on y apprend</a>
     <a class="lien" href="#programme">Programme</a>
-    <a class="cta" href="programme.html">Accéder à l'atelier</a>
+    <a class="cta" href="etape1.html">Accéder à l'atelier</a>
   </div>
 </nav>
 
@@ -201,7 +202,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
       Pas de théorie abstraite : vous vous entraînez sur des cas réels — mots de passe, arnaques par SMS,
       données personnelles, réaction en cas d'incident.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="programme.html">
+      <a class="btn btn-primary" href="etape1.html">
         Commencer l'atelier
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -288,44 +289,49 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
       et mise en commun. Chaque étape est accessible directement en ligne.</p>
 
     <div class="prog">
-      <a href="etape1.html">
+      <a href="etape1.html" data-cle="etape1">
         <span class="h">09:00</span>
         <span class="t">Verrouiller son appareil<small>Code, biométrie, mises à jour · simulateur de verrou</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="bestiaire.html">
+      <a href="bestiaire.html" data-cle="bestiaire">
         <span class="h">09:50</span>
         <span class="t">Bestiaire des menaces<small>Virus, ransomware, phishing… reconnaître les familles</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="etape2.html">
+      <a href="etape2.html" data-cle="etape2">
         <span class="h">10:10</span>
         <span class="t">Protéger ses accès<small>Testeur de robustesse de mots de passe, hors ligne</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="etape3.html">
+      <a href="etape3.html" data-cle="etape3">
         <span class="h">11:05</span>
         <span class="t">Repérer les messages piégés<small>Boîte de réception piégée : 10 messages à trier</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="etape4.html">
+      <a href="etape4.html" data-cle="etape4">
         <span class="h">12:30</span>
         <span class="t">Maîtriser ses données<small>Tri vert / orange / rouge de 16 données</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="etape5.html">
+      <a href="etape5.html" data-cle="etape5">
         <span class="h">13:20</span>
         <span class="t">Réagir en cas d'incident<small>Procédure à ordonner + 5 scénarios</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="nadia.html">
+      <a href="nadia.html" data-cle="nadia">
         <span class="h">14:25</span>
         <span class="t">Cas pratique — le journal de Nadia<small>Tout mobiliser sur une situation complète</small></span>
         <span class="go">Ouvrir →</span>
       </a>
-      <a href="cloture.html">
+      <a href="cloture.html" data-cle="cloture">
         <span class="h">15:20</span>
         <span class="t">Clôture — faire le point<small>Carnet de bord et réflexe prioritaire</small></span>
+        <span class="go">Ouvrir →</span>
+      </a>
+      <a href="quiz.html" data-cle="quiz">
+        <span class="h">bonus</span>
+        <span class="t">Quiz éclair<small>10 questions pour se chauffer ou réviser</small></span>
         <span class="go">Ouvrir →</span>
       </a>
     </div>
@@ -369,7 +375,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
   <div class="wrap">
     <h2>Prêt à passer à l'entraînement ?</h2>
     <p>Ouvrez l'atelier et commencez par la première étape. Tout se fait en ligne, sans installation.</p>
-    <a class="btn btn-primary" href="programme.html">
+    <a class="btn btn-primary" href="etape1.html">
       Accéder à l'atelier
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -384,5 +390,16 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
   </div>
 </footer>
 
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.prog a[data-cle]').forEach(function(a){
+    if(typeof CR!=='undefined' && CR.estFait(a.dataset.cle)){
+      a.classList.add('fait');
+      var g=a.querySelector('.go'); if(g) g.textContent='\u2713 Termin\u00e9';
+    }
+  });
+})();
+</script>
 </body>
 </html>
