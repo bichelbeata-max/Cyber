@@ -15,6 +15,11 @@
 .etapes-methode li{counter-increment:et; display:flex; gap:14px; align-items:flex-start; margin-bottom:12px}
 .etapes-methode li::before{content:counter(et); flex:none; width:32px; height:32px; border-radius:50%;
   background:var(--mauve-soft); color:var(--mauve-dark); font-weight:800; display:flex; align-items:center; justify-content:center}
+.check-liste{list-style:none; padding:0; margin:0}
+.check-liste li{display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid var(--border); margin:0}
+.check-liste li:last-child{border-bottom:none}
+.check-liste input{width:22px; height:22px; margin-top:2px; accent-color:var(--mauve); flex:none; cursor:pointer}
+.check-liste label{font-weight:400; color:var(--text)}
 </style>
 </head>
 <body>
@@ -111,13 +116,15 @@
   <section class="exo">
     <div class="exo-tete"><span class="pic"><svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><b>Livrable — Mes 4 réflexes accès</b></div>
     <div class="exo-corps">
-      <p>Cochez où vous en êtes, puis entourez votre <b>prochain pas</b> sur la carte-mémo papier.</p>
-      <div class="grid2">
-        <div class="mini-carte"><b>1.</b> Ma boîte mail a un mot de passe <b>UNIQUE et LONG</b> — c'est la clé de tous mes autres comptes.</div>
-        <div class="mini-carte"><b>2.</b> Une <b>phrase de passe</b> (4 mots sans lien) vaut mieux qu'un mot compliqué : la longueur bat la complexité.</div>
-        <div class="mini-carte"><b>3.</b> J'active la <b>double authentification</b> sur mes comptes importants (banque, mail, itsme).</div>
-        <div class="mini-carte"><b>4.</b> Un code reçu par SMS <b>ne se partage JAMAIS</b> — même avec « la banque » au téléphone.</div>
-      </div>
+      <p>Cochez où vous en êtes, puis notez votre <b>prochain pas</b>.</p>
+      <ul class="check-liste" id="checklist2">
+        <li><input type="checkbox" id="r1"><label for="r1"><b>1.</b> Ma boîte mail a un mot de passe <b>UNIQUE et LONG</b> — c'est la clé de tous mes autres comptes.</label></li>
+        <li><input type="checkbox" id="r2"><label for="r2"><b>2.</b> Une <b>phrase de passe</b> (4 mots sans lien) vaut mieux qu'un mot compliqué : la longueur bat la complexité.</label></li>
+        <li><input type="checkbox" id="r3"><label for="r3"><b>3.</b> J'active la <b>double authentification</b> sur mes comptes importants (banque, mail, itsme).</label></li>
+        <li><input type="checkbox" id="r4"><label for="r4"><b>4.</b> Un code reçu par SMS <b>ne se partage JAMAIS</b> — même avec « la banque » au téléphone.</label></li>
+      </ul>
+      <label for="prochainPas">Mon prochain pas</label>
+      <textarea id="prochainPas" placeholder="Ex. : activer la double authentification sur ma boîte mail dès ce soir."></textarea>
       <div class="actions">
         <button class="btn" id="finEtape">✓ J'ai terminé cette étape</button>
       </div>
