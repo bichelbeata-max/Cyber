@@ -14,6 +14,7 @@
 .exp{font-weight:700}
 .exp small{display:block; font-weight:400; color:var(--muted); font-size:13.5px}
 .corps{padding:0 18px 14px; white-space:pre-line}
+.msg-shot{display:block; width:100%; max-width:100%; border-radius:10px; border:1px solid var(--border); margin:4px 0 2px}
 .lien{display:inline-block; margin-top:6px; color:var(--blue); text-decoration:underline; font-weight:600}
 .examiner{margin:0 18px 14px; display:inline-flex; align-items:center; gap:8px;
   border:2px dashed var(--border); background:var(--grey-soft); border-radius:12px;
@@ -127,11 +128,12 @@
 <script>
 (function(){
 var MESSAGES=[
- {type:'sms', exp:'bpost', meta:'SMS · numéro court 8850',
+ {type:'mail', exp:'bpost', meta:'bpost-colis-24.info · Objet : Action requise — frais de douane pour votre colis BE-4471002',
+  image:'assets/msg-bpost.jpg',
   corps:'Votre colis BE-4471002 est retenu à notre dépôt. Des frais de douane de 1,99 € sont dus. Réglez sous 48 h pour éviter le renvoi :',
   lien:'bpost-colis-24.info/paiement', dest:'bpost-colis-24.info — ce n\'est PAS bpost.be. Domaine inconnu, créé pour l\'arnaque.',
   verdict:'alerte',
-  explication:'Micro-paiement surprise + lien hors du site officiel : la technique classique pour voler les données de carte. bpost prévient via son app ou un avis papier, jamais par SMS avec paiement.'},
+  explication:'Micro-paiement surprise + lien hors du site officiel : la technique classique pour voler les données de carte. bpost prévient via son app ou un avis papier, jamais par e-mail avec paiement en ligne.'},
  {type:'mail', exp:'Proximus — Facturation', meta:'facturation@proximus-clients.net · Objet : Votre facture est disponible — action requise',
   corps:'Cher client,\nVotre dernière facture n\'a pas pu être prélevée. Mettez à jour vos coordonnées de paiement pour éviter une interruption de service :',
   lien:'proximus-clients.net/moncompte', dest:'proximus-clients.net — le vrai domaine est proximus.be. « -clients.net » est un maquillage.',
@@ -157,12 +159,14 @@ var MESSAGES=[
   lien:null, dest:null,
   verdict:'alerte',
   explication:'Trop beau pour être vrai + documents d\'identité demandés AVANT tout entretien ou contrat : c\'est du vol d\'identité. Une vraie entreprise n\'embauche pas sans entretien et ne demande jamais la carte d\'identité par mail à ce stade. Adresse gmail pour un « service RH » : signal de plus.'},
- {type:'mail', exp:'Magasin Delmart', meta:'newsletter@delmart.be · Objet : Les promos de la semaine',
+ {type:'mail', exp:'Colruyt', meta:'newsletter@colruyt.be · Objet : Les promos de la semaine chez Colruyt',
+  image:'assets/msg-colruyt.jpg',
   corps:'Cette semaine : -30 % sur le rayon épicerie. Découvrez le folder en ligne.\nVous recevez ce mail car vous êtes inscrit à la newsletter. Se désabonner à tout moment.',
-  lien:'delmart.be/folder', dest:'delmart.be — le domaine habituel de l\'enseigne, celui de tous ses précédents mails.',
+  lien:'colruyt.be/folder', dest:'colruyt.be — le domaine habituel de l\'enseigne, celui de tous ses précédents mails.',
   verdict:'ok',
-  explication:'Expéditeur connu et attendu, aucune demande de données ni d\'argent, lien cohérent avec le domaine habituel. Indésirable ? On se désabonne — pas besoin d\'en avoir peur.'},
+  explication:'Expéditeur connu et attendu (newsletter@colruyt.be), aucune demande de données ni d\'argent, lien cohérent avec le domaine habituel. Indésirable ? On se désabonne — pas besoin d\'en avoir peur.'},
  {type:'sms', exp:'CSAM', meta:'SMS · numéro inconnu',
+  image:'assets/msg-csam.jpg',
   corps:'CSAM : vérifiez votre identité sous 48 h, sans quoi vos accès aux services publics seront suspendus :',
   lien:'csam-verification.be-secure.net', dest:'be-secure.net — rien à voir avec csam.be. Campagne de phishing réelle signalée par Safeonweb.',
   verdict:'alerte',
@@ -189,7 +193,7 @@ MESSAGES.forEach(function(m, i){
   var pcls = m.type==='mail'?'p-mail': m.type==='wa'?'p-wa':'p-sms';
   var h='<div class="msg-tete"><div class="pastille '+pcls+'">'+ic+'</div>'+
     '<div class="exp">'+m.exp+'<small>'+m.meta+'</small></div></div>'+
-    '<div class="corps">'+m.corps+(m.lien?'\n<span class="lien">'+m.lien+'</span>':'')+'</div>';
+    '<div class="corps">'+(m.image?'<img class="msg-shot" src="'+m.image+'" alt="Aperçu du message — '+m.exp+'">':m.corps)+(m.lien?'\n<span class="lien">'+m.lien+'</span>':'')+'</div>';
   if(m.lien){
     h+='<button class="examiner" data-i="'+i+'"><svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Examiner le lien (appui long simulé)</button>'+
        '<div class="destination" id="dest-'+i+'"><b>Destination réelle :</b> '+m.dest+'</div>';
@@ -223,14 +227,14 @@ liste.addEventListener('click',function(e){
     faits++; if(juste) concordes++;
     var rep=document.getElementById('rep-'+i);
     rep.innerHTML='<span class="tag '+m.verdict+'">'+VLIB[m.verdict]+'</span>'+
-      '<p style="font-weight:700; margin:10px 0 6px">'+(juste?'✓ Même analyse que l\'agence.':'L\'agence classe ce message autrement — voici pourquoi :')+'</p>'+
+      '<p style="font-weight:700; margin:10px 0 6px">'+(juste?'✓ Analyse correcte.':'À revoir — voici pourquoi :')+'</p>'+
       '<p style="margin:0">'+m.explication+'</p>';
     rep.classList.add('actif');
     document.getElementById('progres').textContent=faits+' / '+MESSAGES.length+' analysés';
     document.getElementById('compteur').textContent=faits+' / '+MESSAGES.length;
     if(faits===MESSAGES.length){
       CR.marquer('etape3');
-      document.getElementById('scoreFinal').textContent='Concordance avec l\'agence : '+concordes+' / '+MESSAGES.length+'.';
+      document.getElementById('scoreFinal').textContent='Analyses correctes : '+concordes+' / '+MESSAGES.length+'.';
       var f=document.getElementById('final');
       f.classList.add('actif');
       f.scrollIntoView({behavior:'smooth'});
