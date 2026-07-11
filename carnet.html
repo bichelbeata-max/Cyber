@@ -61,11 +61,11 @@ small{color:var(--muted)}
 .z-ok{background:var(--ok)} .z-warn{background:var(--warn)} .z-bad{background:var(--bad)}
 
 /* Bestiaire */
-.bete{display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid var(--border)}
+.bete{display:flex; gap:15px; align-items:center; padding:11px 0; border-bottom:1px solid var(--border)}
 .bete:last-child{border-bottom:none}
-.bete .ic{flex:none; width:40px; height:40px; border-radius:10px; background:var(--mauve-soft); color:var(--mauve-dark);
+.bete .ic{flex:none; width:74px; height:70px; border-radius:12px; background:var(--wash);
   display:flex; align-items:center; justify-content:center}
-.bete .ic svg{width:22px; height:22px}
+.bete .ic img{width:64px; height:64px; object-fit:contain; display:block}
 .bete .nom{font-weight:800}
 
 /* Zones à remplir */
@@ -84,7 +84,7 @@ small{color:var(--muted)}
 .box{flex:none; width:19px; height:19px; border:2px solid var(--mauve); border-radius:5px; margin-top:2px}
 
 /* Couverture */
-.cover{display:flex; flex-direction:column; justify-content:center; text-align:center; min-height:277mm}
+.cover{display:flex; flex-direction:column; justify-content:center; text-align:center; min-height:277mm; position:relative}
 .cover .logo-row{display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:30px}
 .cover .logo-row svg{width:46px; height:46px}
 .cover .marque{font-size:26px; font-weight:800; letter-spacing:-.01em}
@@ -94,7 +94,10 @@ small{color:var(--muted)}
 .cover .id .champ{text-align:left}
 .cover .id .champ .k{font-weight:800; color:var(--mauve-dark); font-size:14px; margin-bottom:8px}
 .cover .id .champ .v{border-bottom:2px solid #C9C6DD; height:34px}
-.cover .pied{margin-top:56px; font-size:13.5px; color:var(--muted)}
+.cover .df-logo{display:block; margin:46px auto 0; width:190px; height:auto}
+.cover .subsides-pdf{position:absolute; left:0; right:0; bottom:12mm; text-align:center}
+.cover .subsides-pdf .mention{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; font-weight:600}
+.cover .subsides-pdf img{width:80%; max-width:440px; height:auto}
 
 .engage{border:2px solid var(--mauve); background:var(--mauve-soft); border-radius:14px; padding:20px 22px}
 .engage .lignes .l{border-bottom-color:#C7BEE8}
@@ -135,7 +138,11 @@ small{color:var(--muted)}
         <div class="champ"><div class="k">Prénom</div><div class="v"></div></div>
         <div class="champ"><div class="k">Date</div><div class="v"></div></div>
       </div>
-      <p class="pied">Atelier Cyber-réflexes · Le Forem — Digital Factory</p>
+      <img class="df-logo" src="assets/logodf.png" alt="Digital Factory By forem">
+    </div>
+    <div class="subsides-pdf">
+      <div class="mention">Avec le soutien de</div>
+      <img src="assets/logoPSUB.jpg" alt="Projet cofinancé — En Mieux, Union européenne, Wallonie">
     </div>
   </section>
 
@@ -175,12 +182,12 @@ small{color:var(--muted)}
     <div class="sec-tete"><span class="sec-num">2</span><div><div class="sur">Étape 1 bis</div><h2>Le bestiaire des menaces</h2></div></div>
     <p>Six « bêtes » rôdent dans le monde numérique. Reconnaître la famille suffit à savoir quoi faire.</p>
 
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 15a4 4 0 0 1 8 0"/><path d="M9 9h.01M15 9h.01"/></svg></span><div><span class="nom">Virus</span> — s'installe sans permission et se propage de fichier en fichier pour endommager l'appareil.</div></div>
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M4 10 12 4l8 6"/><path d="M12 14v3"/></svg></span><div><span class="nom">Cheval de Troie</span> — se fait passer pour utile (jeu, logiciel gratuit) mais cache un intrus.</div></div>
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span><div><span class="nom">Spyware (espion)</span> — observe en silence : ce que vous tapez, vos mots de passe, vos messages.</div></div>
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div><span class="nom">Ransomware (rançon)</span> — bloque vos fichiers ou l'appareil et exige un paiement pour les rendre.</div></div>
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a2 2 0 0 1 2-2h2l4-3v12l-4-3H5a2 2 0 0 1-2-2Z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></span><div><span class="nom">Adware (pub)</span> — inonde l'appareil de publicités et le ralentit, souvent installé avec un logiciel gratuit.</div></div>
-    <div class="bete"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a4 4 0 0 1 8 0c0 3-4 4-4 8"/><path d="M12 8a4 4 0 0 1 8 0c0 2-2 3-3 4"/><path d="M8 20h.01"/></svg></span><div><span class="nom">Hameçonnage (phishing)</span> — pas un programme : une tromperie. Un faux message qui imite un organisme connu pour vous faire cliquer ou donner vos données.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/virus.png" alt="Illustration : virus"></span><div><span class="nom">Virus</span> — s'installe sans permission et se propage de fichier en fichier pour endommager l'appareil.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/cheval.png" alt="Illustration : cheval de Troie"></span><div><span class="nom">Cheval de Troie</span> — se fait passer pour utile (jeu, logiciel gratuit) mais cache un intrus.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/spy.png" alt="Illustration : logiciel espion"></span><div><span class="nom">Spyware (espion)</span> — observe en silence : ce que vous tapez, vos mots de passe, vos messages.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/ransom.png" alt="Illustration : rançongiciel"></span><div><span class="nom">Ransomware (rançon)</span> — bloque vos fichiers ou l'appareil et exige un paiement pour les rendre.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/adware.png" alt="Illustration : logiciel publicitaire"></span><div><span class="nom">Adware (pub)</span> — inonde l'appareil de publicités et le ralentit, souvent installé avec un logiciel gratuit.</div></div>
+    <div class="bete"><span class="ic"><img src="assets/fish.png" alt="Illustration : hameçonnage"></span><div><span class="nom">Hameçonnage (phishing)</span> — pas un programme : une tromperie. Un faux message qui imite un organisme connu pour vous faire cliquer ou donner vos données.</div></div>
 
     <div class="cle" style="margin-top:16px"><b>Le point commun :</b> presque toutes entrent parce qu'on leur a <b>ouvert la porte</b> — un clic, une pièce jointe, une installation. Le meilleur antivirus, c'est le réflexe de vérification.</div>
   </section>

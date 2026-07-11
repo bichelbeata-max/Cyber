@@ -175,6 +175,10 @@ section.bloc{padding:var(--space-section) 0}
 /* Footer */
 footer.site{border-top:1px solid var(--line); color:var(--muted); font-size:14.5px}
 footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:36px 32px}
+.subsides{background:#fff; border-top:1px solid var(--line)}
+.subsides .wrap{display:flex; flex-direction:column; align-items:center; gap:14px; padding:34px 32px}
+.subsides .mention{font-size:13px; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; font-weight:600}
+.subsides img{width:100%; max-width:540px; height:auto}
 
 @media (max-width:680px){
   .wrap{padding:0 22px}
@@ -368,6 +372,13 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:16px; flex-wr
     <img class="df-logo-blanc" src="assets/logo-digital-factory-blanc.png" alt="Digital Factory — Le Forem" onerror="this.remove()">
   </div>
 </section>
+
+<div class="subsides">
+  <div class="wrap">
+    <span class="mention">Avec le soutien de</span>
+    <img src="assets/logoPSUB.jpg" alt="Projet cofinancé — En Mieux (enmieux.be), Union européenne, Wallonie" loading="lazy">
+  </div>
+</div>
 
 <footer class="site">
   <div class="wrap">
