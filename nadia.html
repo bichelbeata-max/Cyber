@@ -31,6 +31,9 @@
 .ligne-rapport{border-bottom:1px solid var(--border); padding:12px 0}
 .ligne-rapport:last-child{border-bottom:none}
 .ligne-rapport .jt{font-weight:800; color:var(--mauve-dark)}
+.ligne-rapport.top3{background:var(--mauve-soft); border:1px solid var(--mauve);
+  border-radius:12px; padding:12px 15px; margin-bottom:10px}
+.ligne-rapport.top3 .tag.mauve{margin-bottom:6px; display:inline-block}
 #rapport,#validation{display:none}
 #rapport.actif,#validation.actif{display:block}
 </style>
@@ -102,6 +105,8 @@
 
   <section class="card" id="rapport">
     <h2>Rapport de synthèse — équipe</h2>
+    <p style="margin-top:0; color:var(--muted)">Vos 7 événements, <b>classés du plus grave au moins grave</b> selon vos évaluations.
+    Les <b>3 en tête</b> (marqués « à défendre ») sont ceux que vous présenterez à l'oral — inutile de tout reprendre.</p>
     <div id="rapportCorps"></div>
     <h2 style="margin-top:22px">Plan d'urgence proposé</h2>
     <ol id="rapportUrgence"></ol>
@@ -129,7 +134,12 @@
   <section>
     <h2>La restitution</h2>
     <div class="card">
-      <p><b>3 minutes par équipe :</b> les 3 erreurs les plus graves selon vous, et vos 3 actions d'urgence.</p>
+      <p style="margin-top:0"><b>Chaque équipe a 3 minutes de parole</b> devant le groupe. On ne reprend pas les 7 événements —
+      votre rapport écrit les garde tous. À l'oral, vous ne défendez que le haut de la pile :</p>
+      <ul style="margin:0 0 12px">
+        <li>vos <b>3 erreurs les plus graves</b> parmi les 7 (celles marquées « à défendre » dans le rapport) — et <b>pourquoi</b> ce sont les pires ;</li>
+        <li>vos <b>3 actions d'urgence</b>, dans l'ordre.</li>
+      </ul>
       <p style="margin-bottom:0">Les équipes se complètent — pas de classement, pas de gagnant :
       <b>l'opération réussit si Nadia est protégée.</b></p>
     </div>
@@ -217,10 +227,15 @@ wrap.addEventListener('click',function(e){
 var GTAG={1:'verif',2:'verif',3:'alerte'};
 document.getElementById('genRapport').addEventListener('click',function(){
   var corps=document.getElementById('rapportCorps');
+  // Classer du plus grave au moins grave ; à gravité égale, on garde l'ordre chronologique
+  var ordre=JOURS.map(function(_,i){return i;});
+  ordre.sort(function(a,b){return (etat[b].grav||0)-(etat[a].grav||0);});
   var html='';
-  JOURS.forEach(function(d,i){
-    var s=etat[i];
-    html+='<div class="ligne-rapport"><span class="jt">'+(i+1)+'. '+d.j+' — '+d.t+'</span>'+
+  ordre.forEach(function(i,rang){
+    var d=JOURS[i], s=etat[i], top=rang<3;
+    html+='<div class="ligne-rapport'+(top?' top3':'')+'">'+
+      (top?'<span class="tag mauve">À défendre à l\'oral</span>':'')+
+      '<span class="jt">'+d.j+' — '+d.t+'</span>'+
       (s.grav?' <span class="tag '+GTAG[s.grav]+'">Gravité '+s.grav+'</span>':'')+
       '<br><b>Erreur :</b> '+(s.erreur||'<i>non analysé</i>')+
       '<br><b>À faire :</b> '+(s.action||'<i>non analysé</i>')+'</div>';
