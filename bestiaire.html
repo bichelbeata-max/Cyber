@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Étape 1 bis · Bestiaire des menaces — Cyber-réflexes</title>
+<title>Étape 2 · Bestiaire des menaces — Cyber-réflexes</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
 .situation{background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
@@ -23,14 +23,14 @@
 <header class="topbar">
   <a class="brand" href="index.html"><svg class="logo" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 4.5 5.5v5.2c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10V5.5L12 2.5Z" fill="#5B41B0"/><path d="m8.6 12 2.3 2.3 4.5-4.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Cyber-réflexes</a>
   <a class="nav-link" href="index.html#programme">Programme</a>
-  <span class="etape-tag">Étape 1 bis · 09:40–10:20</span>
+  <span class="etape-tag">Étape 2 · 09:40–10:20</span>
   <span class="spacer"></span>
   <span class="progres mono" id="progres">0 / 6 reconnus</span>
 </header>
 
 <main>
   <div class="hero-etape banniere"><div class="he-copy">
-    <div class="surtitre">Étape 1 bis</div>
+    <div class="surtitre">Étape 2</div>
     <h1>Bestiaire des menaces</h1>
     <p class="sous">Reconnaître les grandes familles de logiciels malveillants à travers des situations du quotidien.</p>
     <div class="meta-grid">
@@ -69,6 +69,11 @@
     <div class="cle"><b>Le point commun de presque toutes ces bêtes :</b> elles entrent parce qu'on leur a
       <b>ouvert la porte</b> — un clic, une pièce jointe, une installation.
       Le meilleur antivirus, c'est le réflexe de vérification. C'est exactement l'objet de la suite de la journée.</div>
+  </section>
+
+  <section>
+    <div class="actions"><button class="btn" id="finEtape">✓ J'ai terminé cette étape</button></div>
+    <div id="finMsg"></div>
   </section>
 </main>
 
@@ -146,6 +151,12 @@ jeu.addEventListener('click',function(e){
     rep.innerHTML='<div class="resultat verif"><span class="tag verif">Pas celle-là</span>'+
       '<p style="margin-bottom:0">« '+b.dataset.nom+' » ne colle pas à cette situation — discutez en équipe et essayez une autre bête.</p></div>';
   }
+});
+
+document.getElementById('finEtape').addEventListener('click',function(){
+  CR.marquer('bestiaire');
+  document.getElementById('finMsg').innerHTML='<div class="resultat ok"><span class="tag ok">Étape validée</span>'+
+    '<p style="margin-bottom:0">Les familles sont identifiées. En avant pour la suite.</p></div>';
 });
 })();
 </script>

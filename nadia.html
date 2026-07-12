@@ -144,6 +144,11 @@
       <b>l'opération réussit si Nadia est protégée.</b></p>
     </div>
   </section>
+
+  <section>
+    <div class="actions"><button class="btn" id="finEtape">✓ J'ai terminé cette étape</button></div>
+    <div id="finMsg"></div>
+  </section>
 </main>
 
 <nav class="pager">
@@ -256,6 +261,12 @@ document.getElementById('comparer').addEventListener('click',function(){
   var v=document.getElementById('validation');
   v.classList.add('actif');
   v.scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('finEtape').addEventListener('click',function(){
+  CR.marquer('nadia');
+  document.getElementById('finMsg').innerHTML='<div class="resultat ok"><span class="tag ok">Étape validée</span>'+
+    '<p style="margin-bottom:0">Dossier bouclé. Place à la restitution, puis à la clôture.</p></div>';
 });
 })();
 </script>
